@@ -1,4 +1,4 @@
-package com.example.YGOCardApp.Monstruo;
+package com.example.YGOCardApp.Monstruo.enums;
 
 public enum TipoMonstruo {
     GUERRERO,

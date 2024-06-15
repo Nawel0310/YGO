@@ -1,9 +1,9 @@
-package com.example.YGOCardApp.Monstruo.MonstruosConcretos;
+package com.example.YGOCardApp.Monstruo.MonstruosBuilders;
 
-import com.example.YGOCardApp.Monstruo.Atributo;
+import com.example.YGOCardApp.Monstruo.MonstruosConcretos.MonstruoSincronia;
+import com.example.YGOCardApp.Monstruo.enums.Atributo;
 import com.example.YGOCardApp.Monstruo.MonstruoConNivelYDefensa;
-import com.example.YGOCardApp.Monstruo.MonstruoConNivelYDefensaBuilder;
-import com.example.YGOCardApp.Monstruo.TipoMonstruo;
+import com.example.YGOCardApp.Monstruo.enums.TipoMonstruo;
 
 public class MonstruoSincroniaBuilder extends MonstruoConNivelYDefensa implements MonstruoConNivelYDefensaBuilder<MonstruoSincronia> {
     @Override

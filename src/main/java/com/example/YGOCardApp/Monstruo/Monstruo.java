@@ -1,5 +1,7 @@
 package com.example.YGOCardApp.Monstruo;
 
+import com.example.YGOCardApp.Monstruo.enums.Atributo;
+import com.example.YGOCardApp.Monstruo.enums.TipoMonstruo;
 import com.example.YGOCardApp.entities.CardBuilder.Carta;
 
 public abstract class Monstruo extends Carta{

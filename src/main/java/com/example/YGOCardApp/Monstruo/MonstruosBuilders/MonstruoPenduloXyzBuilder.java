@@ -1,11 +1,9 @@
-package com.example.YGOCardApp.Monstruo.MonstruosConcretos;
+package com.example.YGOCardApp.Monstruo.MonstruosBuilders;
 
-import com.example.YGOCardApp.Monstruo.Atributo;
+import com.example.YGOCardApp.Monstruo.MonstruosConcretos.MonstruoPenduloXyz;
+import com.example.YGOCardApp.Monstruo.enums.Atributo;
 import com.example.YGOCardApp.Monstruo.Monstruo;
-import com.example.YGOCardApp.Monstruo.MonstruoBuilder;
-import com.example.YGOCardApp.Monstruo.TipoMonstruo;
-import com.example.YGOCardApp.entities.CardBuilder.Carta;
-import com.example.YGOCardApp.entities.CardBuilder.CartaBuilder;
+import com.example.YGOCardApp.Monstruo.enums.TipoMonstruo;
 
 public class MonstruoPenduloXyzBuilder extends Monstruo implements MonstruoBuilder {
     private Integer escala;

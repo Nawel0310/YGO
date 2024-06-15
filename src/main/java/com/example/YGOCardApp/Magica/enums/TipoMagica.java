@@ -1,4 +1,4 @@
-package com.example.YGOCardApp.Magica;
+package com.example.YGOCardApp.Magica.enums;
 
 public enum TipoMagica {
     NORMAL,

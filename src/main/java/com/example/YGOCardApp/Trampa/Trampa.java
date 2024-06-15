@@ -1,5 +1,6 @@
 package com.example.YGOCardApp.Trampa;
 
+import com.example.YGOCardApp.Trampa.enums.TipoTrampa;
 import com.example.YGOCardApp.entities.CardBuilder.Carta;
 
 public class Trampa extends Carta {

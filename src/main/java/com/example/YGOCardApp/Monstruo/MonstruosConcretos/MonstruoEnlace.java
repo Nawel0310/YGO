@@ -1,8 +1,8 @@
 package com.example.YGOCardApp.Monstruo.MonstruosConcretos;
 
-import com.example.YGOCardApp.Monstruo.Atributo;
+import com.example.YGOCardApp.Monstruo.enums.Atributo;
 import com.example.YGOCardApp.Monstruo.Monstruo;
-import com.example.YGOCardApp.Monstruo.TipoMonstruo;
+import com.example.YGOCardApp.Monstruo.enums.TipoMonstruo;
 
 public class MonstruoEnlace extends Monstruo {
     Integer flechas;

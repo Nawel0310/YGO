@@ -1,6 +1,10 @@
-package com.example.YGOCardApp.Monstruo.MonstruosConcretos;
+package com.example.YGOCardApp.Monstruo.MonstruosBuilders;
 
 import com.example.YGOCardApp.Monstruo.*;
+import com.example.YGOCardApp.Monstruo.MonstruosConcretos.MonstruoDeEfecto;
+import com.example.YGOCardApp.Monstruo.enums.Atributo;
+import com.example.YGOCardApp.Monstruo.enums.TipoEspecialMonstruoEfecto;
+import com.example.YGOCardApp.Monstruo.enums.TipoMonstruo;
 
 public class MonstruoDeEfectoBuilder extends MonstruoConNivelYDefensa implements MonstruoConNivelYDefensaBuilder<MonstruoDeEfecto> {
 

@@ -1,6 +1,8 @@
-package com.example.YGOCardApp.Monstruo;
+package com.example.YGOCardApp.Monstruo.MonstruosBuilders;
 
-import com.example.YGOCardApp.entities.CardBuilder.Carta;
+import com.example.YGOCardApp.Monstruo.Monstruo;
+import com.example.YGOCardApp.Monstruo.enums.Atributo;
+import com.example.YGOCardApp.Monstruo.enums.TipoMonstruo;
 import com.example.YGOCardApp.entities.CardBuilder.CartaBuilder;
 
 public interface MonstruoBuilder<T extends Monstruo> extends CartaBuilder<T> {

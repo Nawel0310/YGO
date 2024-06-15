@@ -1,4 +1,4 @@
-package com.example.YGOCardApp.Trampa;
+package com.example.YGOCardApp.Trampa.enums;
 
 public enum TipoTrampa {
     NORMAL,

@@ -1,8 +1,9 @@
-package com.example.YGOCardApp.Monstruo.MonstruosConcretos;
+package com.example.YGOCardApp.Monstruo.MonstruosBuilders;
 
 import com.example.YGOCardApp.Monstruo.*;
-import com.example.YGOCardApp.entities.CardBuilder.Carta;
-import com.example.YGOCardApp.entities.CardBuilder.CartaBuilder;
+import com.example.YGOCardApp.Monstruo.MonstruosConcretos.MonstruoFusion;
+import com.example.YGOCardApp.Monstruo.enums.Atributo;
+import com.example.YGOCardApp.Monstruo.enums.TipoMonstruo;
 
 public class MonstruoFusionBuilder extends MonstruoConNivelYDefensa implements MonstruoConNivelYDefensaBuilder<MonstruoFusion> {
     @Override

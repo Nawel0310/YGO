@@ -1,5 +1,6 @@
 package com.example.YGOCardApp.Magica;
 
+import com.example.YGOCardApp.Magica.enums.TipoMagica;
 import com.example.YGOCardApp.entities.CardBuilder.Carta;
 
 public class Magica extends Carta {
