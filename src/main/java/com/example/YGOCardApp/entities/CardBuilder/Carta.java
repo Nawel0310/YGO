@@ -1,6 +1,12 @@
 package com.example.YGOCardApp.entities.CardBuilder;
 
+import jakarta.persistence.*;
+
+@Entity
+@Inheritance(strategy= InheritanceType.TABLE_PER_CLASS)
 public abstract class Carta {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Integer id;
     protected String nombre;
     protected String efecto;
