@@ -22,6 +22,4 @@ public abstract class Carta {
     public String getEfecto() {
         return efecto;
     }
-
-    //comentario de prueba
 }
