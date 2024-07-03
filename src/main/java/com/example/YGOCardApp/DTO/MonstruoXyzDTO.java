@@ -1,9 +1,89 @@
 package com.example.YGOCardApp.DTO;
 
-import lombok.Data;
 
-@Data
-public class MonstruoXyzDTO extends MonstruoDTO{
+import com.example.YGOCardApp.entities.Monstruo.enums.Atributo;
+import com.example.YGOCardApp.entities.Monstruo.enums.TipoMonstruo;
+
+public class MonstruoXyzDTO{
+    private Integer id;
+    private String nombre;
+    private String efecto;
+    private Atributo atributo;
+    private TipoMonstruo tipoMonstruo;
+    private Integer ataque;
+    private Boolean poseeEfecto;
     private Integer rango;
     private Integer defensa;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getEfecto() {
+        return efecto;
+    }
+
+    public void setEfecto(String efecto) {
+        this.efecto = efecto;
+    }
+
+    public Atributo getAtributo() {
+        return atributo;
+    }
+
+    public void setAtributo(Atributo atributo) {
+        this.atributo = atributo;
+    }
+
+    public TipoMonstruo getTipoMonstruo() {
+        return tipoMonstruo;
+    }
+
+    public void setTipoMonstruo(TipoMonstruo tipoMonstruo) {
+        this.tipoMonstruo = tipoMonstruo;
+    }
+
+    public Integer getAtaque() {
+        return ataque;
+    }
+
+    public void setAtaque(Integer ataque) {
+        this.ataque = ataque;
+    }
+
+    public Boolean getPoseeEfecto() {
+        return poseeEfecto;
+    }
+
+    public void setPoseeEfecto(Boolean poseeEfecto) {
+        this.poseeEfecto = poseeEfecto;
+    }
+
+    public Integer getRango() {
+        return rango;
+    }
+
+    public void setRango(Integer rango) {
+        this.rango = rango;
+    }
+
+    public Integer getDefensa() {
+        return defensa;
+    }
+
+    public void setDefensa(Integer defensa) {
+        this.defensa = defensa;
+    }
 }

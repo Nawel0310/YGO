@@ -8,7 +8,6 @@ import com.example.YGOCardApp.entities.Monstruo.enums.TipoMonstruo;
 public class MonstruoXyzBuilder extends Monstruo implements MonstruoBuilder<MonstruoXyz> {
     private Integer rango;
     private Integer defensa;
-    private Boolean poseeEfecto;
 
     @Override
     public MonstruoXyzBuilder setAtributo(Atributo atributo) {

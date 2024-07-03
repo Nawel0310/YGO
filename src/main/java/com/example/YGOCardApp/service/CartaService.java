@@ -1,6 +1,5 @@
 package com.example.YGOCardApp.service;
 
-import com.example.YGOCardApp.DTO.CartaDTO;
 import com.example.YGOCardApp.entities.CardBuilder.Carta;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -9,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-public abstract class CartaService<T extends CartaDTO, S extends Carta> {
+public abstract class CartaService<T, S extends Carta> {
 
     protected final JpaRepository<S, Integer> repository;
 
