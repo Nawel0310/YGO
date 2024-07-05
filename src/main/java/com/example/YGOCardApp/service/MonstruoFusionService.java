@@ -4,9 +4,13 @@ import com.example.YGOCardApp.DTO.MonstruoFusionDTO;
 import com.example.YGOCardApp.entities.Monstruo.MonstruosBuilders.MonstruoFusionBuilder;
 import com.example.YGOCardApp.entities.Monstruo.MonstruosConcretos.MonstruoFusion;
 import com.example.YGOCardApp.repository.MonstruoConNivelYDefensaRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class MonstruoFusionService extends MonstruoConNivelYDefensaService<MonstruoFusionDTO, MonstruoFusion>{
 
+    @Autowired
     public MonstruoFusionService(MonstruoConNivelYDefensaRepository<MonstruoFusion> monstruoConNivelYDefensaRepository) {
         super(monstruoConNivelYDefensaRepository);
     }
