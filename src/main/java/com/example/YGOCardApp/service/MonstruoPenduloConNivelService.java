@@ -6,6 +6,7 @@ import com.example.YGOCardApp.entities.Monstruo.MonstruosBuilders.MonstruoPendul
 import com.example.YGOCardApp.entities.Monstruo.MonstruosConcretos.MonstruoPenduloConNivel;
 import com.example.YGOCardApp.repository.MonstruoConNivelYDefensaRepository;
 import com.example.YGOCardApp.repository.MonstruoPenduloConNivelRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -13,6 +14,7 @@ import java.util.stream.Collectors;
 public class MonstruoPenduloConNivelService<T extends MonstruoConNivelYDefensa> extends MonstruoConNivelYDefensaService<MonstruoPenduloConNivelDTO,MonstruoPenduloConNivel<T>>{
     private final MonstruoPenduloConNivelRepository<T> monstruoPenduloConNivelRepository;
 
+    @Autowired
     public MonstruoPenduloConNivelService(MonstruoConNivelYDefensaRepository<MonstruoPenduloConNivel<T>> monstruoConNivelYDefensaRepository, MonstruoPenduloConNivelRepository<T> monstruoPenduloConNivelRepository) {
         super(monstruoConNivelYDefensaRepository);
         this.monstruoPenduloConNivelRepository=monstruoPenduloConNivelRepository;
@@ -38,7 +40,7 @@ public class MonstruoPenduloConNivelService<T extends MonstruoConNivelYDefensa> 
         dto.setDefensa(monstruoPenduloConNivel.getDefensa());
         dto.setEsCantante(monstruoPenduloConNivel.getEsCantante());
         dto.setEscala(monstruoPenduloConNivel.getEscala());
-        dto.setEfectoPendulo(dto.getEfectoPendulo());
+        dto.setEfectoPendulo(monstruoPenduloConNivel.getEfectoPendulo());
         return dto;
     }
 

@@ -3,6 +3,7 @@ package com.example.YGOCardApp.service;
 import com.example.YGOCardApp.DTO.MonstruoDeEfectoDTO;
 import com.example.YGOCardApp.entities.Monstruo.MonstruosBuilders.MonstruoDeEfectoBuilder;
 import com.example.YGOCardApp.entities.Monstruo.MonstruosConcretos.MonstruoDeEfecto;
+import com.example.YGOCardApp.entities.Monstruo.enums.TipoEspecialMonstruoEfecto;
 import com.example.YGOCardApp.repository.MonstruoConNivelYDefensaRepository;
 import com.example.YGOCardApp.repository.MonstruoDeEfectoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +20,8 @@ public class MonstruoDeEfectoService extends MonstruoConNivelYDefensaService<Mon
         this.monstruoDeEfectoRepository = monstruoDeEfectoRepository;
     }
 
-    public List<MonstruoDeEfectoDTO> getMonstruosByTipoEspecialMonstruoEfectoa() {
-        List<MonstruoDeEfecto> monstruosDeEfecto = monstruoDeEfectoRepository.findByTipoEspecialMonstruoEfecto();
+    public List<MonstruoDeEfectoDTO> getMonstruosByTipoEspecialMonstruoEfecto(TipoEspecialMonstruoEfecto tipoEspecialMonstruoEfecto) {
+        List<MonstruoDeEfecto> monstruosDeEfecto = monstruoDeEfectoRepository.findByTipoEspecialMonstruoEfecto( tipoEspecialMonstruoEfecto);
         return monstruosDeEfecto.stream().map(this::convertToDTO).collect(Collectors.toList());
     }
 

@@ -1,5 +1,9 @@
 package com.example.YGOCardApp.entities.Monstruo;
 
+
+import jakarta.persistence.Entity;
+
+@Entity
 public abstract class MonstruoConNivelYDefensa extends Monstruo {
     protected Integer nivel;
     protected Integer defensa;

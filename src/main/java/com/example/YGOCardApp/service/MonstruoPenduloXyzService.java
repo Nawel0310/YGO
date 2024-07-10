@@ -1,15 +1,11 @@
 package com.example.YGOCardApp.service;
 
-import com.example.YGOCardApp.DTO.MonstruoPenduloConNivelDTO;
 import com.example.YGOCardApp.DTO.MonstruoPenduloXyzDTO;
-import com.example.YGOCardApp.DTO.MonstruoXyzDTO;
 import com.example.YGOCardApp.entities.Monstruo.MonstruosBuilders.MonstruoPenduloXyzBuilder;
-import com.example.YGOCardApp.entities.Monstruo.MonstruosBuilders.MonstruoXyzBuilder;
-import com.example.YGOCardApp.entities.Monstruo.MonstruosConcretos.MonstruoPenduloConNivel;
 import com.example.YGOCardApp.entities.Monstruo.MonstruosConcretos.MonstruoPenduloXyz;
-import com.example.YGOCardApp.entities.Monstruo.MonstruosConcretos.MonstruoXyz;
 import com.example.YGOCardApp.repository.MonstruoPenduloXyzRepository;
 import com.example.YGOCardApp.repository.MonstruoXyzRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -17,6 +13,7 @@ import java.util.stream.Collectors;
 public class MonstruoPenduloXyzService extends MonstruoXyzService{
     private final MonstruoPenduloXyzRepository monstruoPenduloXyzRepository;
 
+    @Autowired
     public MonstruoPenduloXyzService(MonstruoXyzRepository monstruoXyzRepository, MonstruoPenduloXyzRepository monstruoPenduloXyzRepository) {
         super(monstruoXyzRepository);
         this.monstruoPenduloXyzRepository=monstruoPenduloXyzRepository;
@@ -39,7 +36,7 @@ public class MonstruoPenduloXyzService extends MonstruoXyzService{
         dto.setRango(monstruoPenduloXyz.getRango());
         dto.setDefensa(monstruoPenduloXyz.getDefensa());
         dto.setEscala(monstruoPenduloXyz.getEscala());
-        dto.setEfectoPendulo(dto.getEfectoPendulo());
+        dto.setEfectoPendulo(monstruoPenduloXyz.getEfectoPendulo());
         return dto;
     }
 

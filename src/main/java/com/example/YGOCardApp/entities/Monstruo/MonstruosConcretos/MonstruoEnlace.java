@@ -3,7 +3,10 @@ package com.example.YGOCardApp.entities.Monstruo.MonstruosConcretos;
 import com.example.YGOCardApp.entities.Monstruo.enums.Atributo;
 import com.example.YGOCardApp.entities.Monstruo.Monstruo;
 import com.example.YGOCardApp.entities.Monstruo.enums.TipoMonstruo;
+import jakarta.persistence.Entity;
 
+
+@Entity
 public class MonstruoEnlace extends Monstruo {
     Integer flechas;
 

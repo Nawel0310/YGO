@@ -4,8 +4,13 @@ import com.example.YGOCardApp.entities.Monstruo.enums.Atributo;
 import com.example.YGOCardApp.entities.Monstruo.MonstruoConNivelYDefensa;
 import com.example.YGOCardApp.entities.Monstruo.enums.TipoEspecialMonstruoEfecto;
 import com.example.YGOCardApp.entities.Monstruo.enums.TipoMonstruo;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 
+@Entity
 public class MonstruoDeEfecto  extends MonstruoConNivelYDefensa {
+    @Enumerated(EnumType.STRING)
     TipoEspecialMonstruoEfecto tipoEspecialMonstruoEfecto;
 
     public MonstruoDeEfecto(Integer id, Integer ataque, Integer defensa,
