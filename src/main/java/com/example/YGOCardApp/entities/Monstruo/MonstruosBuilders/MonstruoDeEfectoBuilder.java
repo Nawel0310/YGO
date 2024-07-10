@@ -1,6 +1,5 @@
 package com.example.YGOCardApp.entities.Monstruo.MonstruosBuilders;
 
-import com.example.YGOCardApp.Monstruo.*;
 import com.example.YGOCardApp.entities.Monstruo.MonstruoConNivelYDefensa;
 import com.example.YGOCardApp.entities.Monstruo.MonstruosConcretos.MonstruoDeEfecto;
 import com.example.YGOCardApp.entities.Monstruo.enums.Atributo;

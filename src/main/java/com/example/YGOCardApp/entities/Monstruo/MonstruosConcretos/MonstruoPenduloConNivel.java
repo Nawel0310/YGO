@@ -32,7 +32,4 @@ public class MonstruoPenduloConNivel<T extends MonstruoConNivelYDefensa> extends
         this.escala=escala;
         this.efectoPendulo=efectoPendulo;
     }
-
-
-
 }

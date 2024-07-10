@@ -22,8 +22,8 @@ public class MonstruoXyzService extends MonstruoService<MonstruoXyzDTO, Monstruo
     }
 
     public List<MonstruoXyzDTO> getMonstruosByRango(Integer rango){
-        List<MonstruoXyz> monstruoXyzs= monstruoXyzRepository.findByRango(rango);
-        return monstruoXyzs.stream().
+        List<MonstruoXyz> monstruosXyz= monstruoXyzRepository.findByRango(rango);
+        return monstruosXyz.stream().
                 map(this::convertToDTO).
                 collect(Collectors.toList());
     }

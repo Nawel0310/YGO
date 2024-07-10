@@ -50,7 +50,7 @@ public class MonstruoEnlaceBuilder extends Monstruo implements MonstruoBuilder<M
         return this;
     }
 
-    public MonstruoEnlaceBuilder setFelchas (Integer flechas){
+    public MonstruoEnlaceBuilder setFlechas (Integer flechas){
         this.flechas=flechas;
         return this;
     }
