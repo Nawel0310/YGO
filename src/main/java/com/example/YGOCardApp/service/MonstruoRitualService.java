@@ -29,6 +29,7 @@ public class MonstruoRitualService extends MonstruoConNivelYDefensaService<Monst
         dto.setNivel(monstruoRitual.getNivel());
         dto.setDefensa(monstruoRitual.getDefensa());
         dto.setEsCantante(monstruoRitual.getEsCantante());
+        dto.setTipoEspecialMonstruoEfecto(monstruoRitual.getTipoEspecialMonstruoEfecto());
         return dto;
     }
 
@@ -45,6 +46,7 @@ public class MonstruoRitualService extends MonstruoConNivelYDefensaService<Monst
                 .setNivel(dto.getNivel())
                 .setDefensa(dto.getDefensa())
                 .setCantante(dto.getEsCantante())
+                .setTipoEspecialMonstruoEfecto(dto.getTipoEspecialMonstruoEfecto())
                 .build();
     }
 }

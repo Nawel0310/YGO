@@ -4,5 +4,12 @@ import com.example.YGOCardApp.entities.CardBuilder.Carta;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.NoRepositoryBean;
 
-@NoRepositoryBean //Le indicamos a Spring que no debe instanciar este repo directamente
-public interface CartaRepository<T extends Carta> extends JpaRepository<T, Integer> { }
+import java.util.List;
+import java.util.Optional;
+
+@NoRepositoryBean
+public interface CartaRepository<T extends Carta> extends JpaRepository<T, Integer> {
+    Optional<T> findById(Integer id);
+    List<T> findByNombre(String nombre);
+    List<T> findByEfecto(String efecto);
+}

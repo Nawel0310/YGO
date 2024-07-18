@@ -62,6 +62,6 @@ public class MonstruoXyzBuilder extends Monstruo implements MonstruoBuilder<Mons
 
     @Override
     public MonstruoXyz build() {
-        return new MonstruoXyz(id,ataque,defensa,atributo,tipoMonstruo,efecto,poseeEfecto,rango);
+        return new MonstruoXyz(id,nombre,ataque,defensa,atributo,tipoMonstruo,efecto,poseeEfecto,rango);
     }
 }

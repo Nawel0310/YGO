@@ -1,6 +1,7 @@
 package com.example.YGOCardApp.DTO;
 
 import com.example.YGOCardApp.entities.Monstruo.enums.Atributo;
+import com.example.YGOCardApp.entities.Monstruo.enums.TipoEspecialMonstruoEfecto;
 import com.example.YGOCardApp.entities.Monstruo.enums.TipoMonstruo;
 
 public class MonstruoRitualDTO {
@@ -15,6 +16,7 @@ public class MonstruoRitualDTO {
     private Integer nivel;
     private Integer defensa;
     private Boolean esCantante;
+    private TipoEspecialMonstruoEfecto tipoEspecialMonstruoEfecto;
 
     public Boolean getEsCantante() {
         return esCantante;
@@ -94,5 +96,13 @@ public class MonstruoRitualDTO {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public TipoEspecialMonstruoEfecto getTipoEspecialMonstruoEfecto() {
+        return tipoEspecialMonstruoEfecto;
+    }
+
+    public void setTipoEspecialMonstruoEfecto(TipoEspecialMonstruoEfecto tipoEspecialMonstruoEfecto) {
+        this.tipoEspecialMonstruoEfecto = tipoEspecialMonstruoEfecto;
     }
 }

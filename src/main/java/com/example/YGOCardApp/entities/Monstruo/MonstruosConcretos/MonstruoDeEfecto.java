@@ -10,15 +10,17 @@ import jakarta.persistence.Enumerated;
 
 @Entity
 public class MonstruoDeEfecto  extends MonstruoConNivelYDefensa {
+
     @Enumerated(EnumType.STRING)
     TipoEspecialMonstruoEfecto tipoEspecialMonstruoEfecto;
 
-    public MonstruoDeEfecto(Integer id, Integer ataque, Integer defensa,
+    public MonstruoDeEfecto(Integer id, String nombre, Integer ataque, Integer defensa,
                             Atributo atributo, TipoMonstruo tipoMonstruo,
                             String efecto, Integer nivel, Boolean esCantante,
                             TipoEspecialMonstruoEfecto tipoEspecialMonstruoEfecto) {
         this.id=id;
         this.ataque=ataque;
+        this.nombre=nombre;
         this.defensa=defensa;
         this.atributo=atributo;
         this.tipoMonstruo=tipoMonstruo;

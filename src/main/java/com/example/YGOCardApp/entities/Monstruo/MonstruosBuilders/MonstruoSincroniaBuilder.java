@@ -68,7 +68,7 @@ public class MonstruoSincroniaBuilder extends MonstruoConNivelYDefensa implement
 
     @Override
     public MonstruoSincronia build() {
-        return new MonstruoSincronia(id,ataque,defensa,atributo,tipoMonstruo,efecto,nivel,esCantante,poseeEfecto);
+        return new MonstruoSincronia(id,nombre,ataque,defensa,atributo,tipoMonstruo,efecto,nivel,esCantante,poseeEfecto);
     }
 
 

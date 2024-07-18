@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Guardar Carta</title>
+    <style>
+        .form-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+        .form-content {
+            width: 300px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+    </style>
+    <script>
+        function showForm(formType) {
+            document.getElementById('magicaForm').style.display = formType === 'magica' ? 'block' : 'none';
+            document.getElementById('trampaForm').style.display = formType === 'trampa' ? 'block' : 'none';
+            document.getElementById('monstruoNormalForm').style.display = formType === 'monstruoNormal' ? 'block' : 'none';
+            document.getElementById('monstruoEfectoForm').style.display = formType === 'monstruoEfecto' ? 'block' : 'none';
+            document.getElementById('monstruoRitualForm').style.display = formType === 'monstruoRitual' ? 'block' : 'none';
+            document.getElementById('monstruoFusionForm').style.display = formType === 'monstruoFusion' ? 'block' : 'none';
+            document.getElementById('monstruoSincroniaForm').style.display = formType === 'monstruoSincronia' ? 'block' : 'none';
+            document.getElementById('monstruoXyzForm').style.display = formType === 'monstruoXyz' ? 'block' : 'none';
+            document.getElementById('monstruoEnlaceForm').style.display = formType === 'monstruoEnlace' ? 'block' : 'none';
+        }
+    </script>
+</head>
+<body>
+<div class="form-container">
+    <div class="button-container">
+        <button onclick="showForm('magica')">Mágica</button>
+        <button onclick="showForm('trampa')">Trampa</button>
+        <button onclick="showForm('monstruo')">Monstruo</button>
+    </div>
+    <div class="button-container" style="display: none;" id="monstruoDropdown">
+        <button onclick="showForm('monstruoNormal')">Monstruo Normal</button>
+        <button onclick="showForm('monstruoEfecto')">Monstruo de Efecto</button>
+        <button onclick="showForm('monstruoRitual')">Monstruo Ritual</button>
+        <button onclick="showForm('monstruoFusion')">Monstruo Fusion</button>
+        <button onclick="showForm('monstruoSincronia')">Monstruo Sincronía</button>
+        <button onclick="showForm('monstruoXyz')">Monstruo Xyz</button>
+        <button onclick="showForm('monstruoEnlace')">Monstruo Enlace</button>
+    </div>
+    <div id="magicaForm" class="form-content" style="display: none;">
+        <h2>Guardar Carta Mágica</h2>
+        <form th:action="@{/carta/saveMagica}" th:object="${magica}" method="post">
+            <div>
+                <label for="magicaNombre">Nombre:</label>
+                <input type="text" id="magicaNombre" th:field="*{nombre}" required />
+            </div>
+            <div>
+                <label for="magicaEfecto">Efecto:</label>
+                <input type="text" id="magicaEfecto" th:field="*{efecto}" required />
+            </div>
+            <div>
+                <label for="tipoMagica">Tipo:</label>
+                <select id="tipoMagica" th:field="*{tipoMagica}" required>
+                    <option th:each="tipo : ${tiposMagica}" th:value="${tipo}" th:text="${tipo}">Tipo</option>
+                </select>
+            </div>
+            <div>
+                <button type="submit">Guardar</button>
+            </div>
+            <div th:if="${param.successMagica}">
+                <p style="color:green;">Carta mágica guardada con éxito</p>
+            </div>
+        </form>
+    </div>
+    <div id="trampaForm" class="form-content" style="display: none;">
+        <h2>Guardar Carta Trampa</h2>
+        <form th:action="@{/carta/saveTrampa}" th:object="${trampa}" method="post">
+            <div>
+                <label for="trampaNombre">Nombre:</label>
+                <input type="text" id="trampaNombre" th:field="*{nombre}" required />
+            </div>
+            <div>
+                <label for="trampaEfecto">Efecto:</label>
+                <input type="text" id="trampaEfecto" th:field="*{efecto}" required />
+            </div>
+            <div>
+                <label for="tipoTrampa">Tipo:</label>
+                <select id="tipoTrampa" th:field="*{tipoTrampa}" required>
+                    <option th:each="tipo : ${tiposTrampa}" th:value="${tipo}" th:text="${tipo}">Tipo</option>
+                </select>
+            </div>
+            <div>
+                <button type="submit">Guardar</button>
+            </div>
+            <div th:if="${param.successTrampa}">
+                <p style="color:green;">Carta trampa guardada con éxito</p>
+            </div>
+        </form>
+    </div>
+    <div id="monstruoNormalForm" class="form-content" style="display: none;">
+        <h2>Guardar Monstruo Normal</h2>
+        <form th:action="@{/carta/saveMonstruoNormal}" th:object="${monstruoNormal}" method="post">
+
+            <div>
+                <label for="monstruoNormalNombre">Nombre:</label>
+                <input type="text" id="monstruoNormalNombre" th:field="*{nombre}" required />
+            </div>
+
+            <div>
+                <label for="monstruoNormalEfecto">Texto:</label>
+                <input type="text" id="monstruoNormalEfecto" th:field="*{efecto}" required />
+            </div>
+
+            <div>
+                <label for="monstruoNormalAtributo">Atributo:</label>
+                <select id="monstruoNormalAtributo" th:field="*{atributo}" required>
+                    <option th:each="atributo : ${atributos}" th:value="${atributo}" th:text="${atributo}">Atributo</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="monstruoNormalTipo">Tipo:</label>
+                <select id="monstruoNormalTipo" th:field="*{tipoMonstruo}" required>
+                    <option th:each="tipo : ${tiposMonstruo}" th:value="${tipo}" th:text="${tipo}">Tipo</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="monstruoNormalAtaque">Ataque:</label>
+                <input type="number" id="monstruoNormalAtaque" th:field="*{ataque}" required />
+            </div>
+
+            <div>
+                <label for="monstruoNormalDefensa">Defensa:</label>
+                <input type="number" id="monstruoNormalDefensa" th:field="*{defensa}" required />
+            </div>
+
+            <div>
+                <label for="monstruoNormalNivel">Nivel:</label>
+                <input type="number" id="monstruoNormalNivel" th:field="*{nivel}" required />
+            </div>
+
+            <div>
+                <label for="monstruoNormalEsCantante">¿Es Cantante?</label>
+                <input type="checkbox" id="monstruoNormalEsCantante" th:field="*{esCantante}" />
+            </div>
+
+            <div>
+                <button type="submit">Guardar</button>
+            </div>
+
+            <div th:if="${param.successMonstruoNormal}">
+                <p style="color:green;">Monstruo Normal guardado con éxito</p>
+            </div>
+
+        </form>
+    </div>
+
+    <div id="monstruoEfectoForm" class="form-content" style="display: none;">
+        <h2>Guardar Monstruo de Efecto</h2>
+        <form th:action="@{/carta/saveMonstruoDeEfecto}" th:object="${monstruoDeEfecto}" method="post">
+
+            <div>
+                <label for="monstruoEfectoNombre">Nombre:</label>
+                <input type="text" id="monstruoEfectoNombre" th:field="*{nombre}" required />
+            </div>
+
+            <div>
+                <label for="monstruoEfectoEfecto">Efecto:</label>
+                <input type="text" id="monstruoEfectoEfecto" th:field="*{efecto}" required />
+            </div>
+
+            <div>
+                <label for="monstruoEfectoAtributo">Atributo:</label>
+                <select id="monstruoEfectoAtributo" th:field="*{atributo}" required>
+                    <option th:each="atributo : ${atributos}" th:value="${atributo}" th:text="${atributo}">Atributo</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="monstruoEfectoTipo">Tipo:</label>
+                <select id="monstruoEfectoTipo" th:field="*{tipoMonstruo}" required>
+                    <option th:each="tipo : ${tiposMonstruo}" th:value="${tipo}" th:text="${tipo}">Tipo</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="monstruoEfectoTipoEspecial">Tipo Especial:</label>
+                <select id="monstruoEfectoTipoEspecial" th:field="*{tipoEspecialMonstruoEfecto}" required>
+                    <option th:each="tipoEspecialMonstruoEfecto : ${tiposEspecialMonstruoEfecto}"
+                            th:value="${tipoEspecialMonstruoEfecto}" th:text="${tipoEspecialMonstruoEfecto}">
+                        Tipo
+                    </option>
+                </select>
+            </div>
+
+            <div>
+                <label for="monstruoEfectoAtaque">Ataque:</label>
+                <input type="number" id="monstruoEfectoAtaque" th:field="*{ataque}" required />
+            </div>
+
+            <div>
+                <label for="monstruoEfectoDefensa">Defensa:</label>
+                <input type="number" id="monstruoEfectoDefensa" th:field="*{defensa}" required />
+            </div>
+
+            <div>
+                <label for="monstruoEfectoNivel">Nivel:</label>
+                <input type="number" id="monstruoEfectoNivel" th:field="*{nivel}" required />
+            </div>
+
+            <div>
+                <label for="monstruoEfectoEsCantante">¿Es Cantante?</label>
+                <input type="checkbox" id="monstruoEfectoEsCantante" th:field="*{esCantante}" />
+            </div>
+
+            <div>
+                <button type="submit">Guardar</button>
+            </div>
+
+            <div th:if="${param.successMonstruoEfecto}">
+                <p style="color:green;">Monstruo de efecto guardado con éxito</p>
+            </div>
+
+        </form>
+    </div>
+
+    <div id="monstruoRitualForm" class="form-content" style="display: none;">
+        <h2>Guardar Monstruo Ritual</h2>
+        <form th:action="@{/carta/saveMonstruoRitual}" th:object="${monstruoRitual}" method="post">
+
+            <div>
+                <label for="monstruoRitualNombre">Nombre:</label>
+                <input type="text" id="monstruoRitualNombre" th:field="*{nombre}" required />
+            </div>
+
+            <div>
+                <label for="monstruoRitualEfecto">Efecto:</label>
+                <input type="text" id="monstruoRitualEfecto" th:field="*{efecto}" required />
+            </div>
+
+            <div>
+                <label for="monstruoRitualAtributo">Atributo:</label>
+                <select id="monstruoRitualAtributo" th:field="*{atributo}" required>
+                    <option th:each="atributo : ${atributos}" th:value="${atributo}" th:text="${atributo}">Atributo</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="monstruoRitualTipo">Tipo:</label>
+                <select id="monstruoRitualTipo" th:field="*{tipoMonstruo}" required>
+                    <option th:each="tipo : ${tiposMonstruo}" th:value="${tipo}" th:text="${tipo}">Tipo</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="monstruoRitualTipoEspecial">Tipo Especial:</label>
+                <select id="monstruoRitualTipoEspecial" th:field="*{tipoEspecialMonstruoEfecto}" required>
+                    <option th:each="tipoEspecial : ${tiposEspecialMonstruoEfecto}"
+                            th:value="${tipoEspecial}" th:text="${tipoEspecial}">
+                        Tipo
+                    </option>
+                </select>
+            </div>
+
+            <div>
+                <label for="monstruoRitualAtaque">Ataque:</label>
+                <input type="number" id="monstruoRitualAtaque" th:field="*{ataque}" required />
+            </div>
+
+            <div>
+                <label for="monstruoRitualDefensa">Defensa:</label>
+                <input type="number" id="monstruoRitualDefensa" th:field="*{defensa}" required />
+            </div>
+
+            <div>
+                <label for="monstruoRitualNivel">Nivel:</label>
+                <input type="number" id="monstruoRitualNivel" th:field="*{nivel}" required />
+            </div>
+
+            <div>
+                <label for="monstruoRitualEsCantante">¿Es Cantante?</label>
+                <input type="checkbox" id="monstruoRitualEsCantante" th:field="*{esCantante}" />
+            </div>
+
+            <div>
+                <label for="monstruoRitualPoseeEfecto">¿Posee Efecto?</label>
+                <input type="checkbox" id="monstruoRitualPoseeEfecto" th:field="*{poseeEfecto}" />
+            </div>
+
+            <div>
+                <button type="submit">Guardar</button>
+            </div>
+
+            <div th:if="${param.successmonstruoRitual}">
+                <p style="color:green;">Monstruo Ritual guardado con éxito</p>
+            </div>
+
+        </form>
+    </div>
+
+    <div id="monstruoFusionForm" class="form-content" style="display: none;">
+        <h2>Guardar Monstruo Fusion</h2>
+        <form th:action="@{/carta/saveMonstruoFusion}" th:object="${monstruoFusion}" method="post">
+
+            <div>
+                <label for="monstruoFusionNombre">Nombre:</label>
+                <input type="text" id="monstruoFusionNombre" th:field="*{nombre}" required />
+            </div>
+
+            <div>
+                <label for="monstruoFusionEfecto">Texto:</label>
+                <input type="text" id="monstruoFusionEfecto" th:field="*{efecto}" required />
+            </div>
+
+            <div>
+                <label for="monstruoFusionAtributo">Atributo:</label>
+                <select id="monstruoFusionAtributo" th:field="*{atributo}" required>
+                    <option th:each="atributo : ${atributos}" th:value="${atributo}" th:text="${atributo}">Atributo</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="monstruoFusionTipo">Tipo:</label>
+                <select id="monstruoFusionTipo" th:field="*{tipoMonstruo}" required>
+                    <option th:each="tipo : ${tiposMonstruo}" th:value="${tipo}" th:text="${tipo}">Tipo</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="monstruoFusionAtaque">Ataque:</label>
+                <input type="number" id="monstruoFusionAtaque" th:field="*{ataque}" required />
+            </div>
+
+            <div>
+                <label for="monstruoFusionDefensa">Defensa:</label>
+                <input type="number" id="monstruoFusionDefensa" th:field="*{defensa}" required />
+            </div>
+
+            <div>
+                <label for="monstruoFusionNivel">Nivel:</label>
+                <input type="number" id="monstruoFusionNivel" th:field="*{nivel}" required />
+            </div>
+
+            <div>
+                <label for="monstruoFusionEsCantante">¿Es Cantante?</label>
+                <input type="checkbox" id="monstruoFusionEsCantante" th:field="*{esCantante}" />
+            </div>
+
+            <div>
+                <label for="monstruoFusionPoseeEfecto">¿Posee Efecto?</label>
+                <input type="checkbox" id="monstruoFusionPoseeEfecto" th:field="*{poseeEfecto}" />
+            </div>
+
+            <!--MonstruoFusionPendulo-->
+
+            <div>
+                <button type="submit">Guardar</button>
+            </div>
+            <div th:if="${param.successmonstruoFusion}">
+                <p style="color:green;">Monstruo Fusion guardado con éxito</p>
+            </div>
+        </form>
+    </div>
+
+    <div id="monstruoSincroniaForm" class="form-content" style="display: none;">
+        <h2>Guardar Monstruo Sincronia</h2>
+        <form th:action="@{/carta/saveMonstruoSincronia}" th:object="${monstruoSincronia}" method="post">
+
+            <div>
+                <label for="monstruoSincroniaNombre">Nombre:</label>
+                <input type="text" id="monstruoSincroniaNombre" th:field="*{nombre}" required />
+            </div>
+
+
+            <div>
+                <label for="monstruoSincroniaEfecto">Texto:</label>
+                <input type="text" id="monstruoSincroniaEfecto" th:field="*{efecto}" required />
+            </div>
+
+
+            <div>
+                <label for="monstruoSincroniaAtributo">Atributo:</label>
+                <select id="monstruoSincroniaAtributo" th:field="*{atributo}" required>
+                    <option th:each="atributo : ${atributos}" th:value="${atributo}" th:text="${atributo}">Atributo</option>
+                </select>
+            </div>
+
+
+            <div>
+                <label for="monstruoSincroniaTipo">Tipo:</label>
+                <select id="monstruoSincroniaTipo" th:field="*{tipoMonstruo}" required>
+                    <option th:each="tipo : ${tiposMonstruo}" th:value="${tipo}" th:text="${tipo}">Tipo</option>
+                </select>
+            </div>
+
+
+            <div>
+                <label for="monstruoSincroniaAtaque">Ataque:</label>
+                <input type="number" id="monstruoSincroniaAtaque" th:field="*{ataque}" required />
+            </div>
+
+
+            <div>
+                <label for="monstruoSincroniaDefensa">Defensa:</label>
+                <input type="number" id="monstruoSincroniaDefensa" th:field="*{defensa}" required />
+            </div>
+
+
+            <div>
+                <label for="monstruoSincroniaNivel">Nivel:</label>
+                <input type="number" id="monstruoSincroniaNivel" th:field="*{nivel}" required />
+            </div>
+
+
+            <div>
+                <label for="monstruoSincroniaEsCantante">¿Es Cantante?</label>
+                <input type="checkbox" id="monstruoSincroniaEsCantante" th:field="*{esCantante}" />
+            </div>
+
+
+            <div>
+                <label for="monstruoSincroniaPoseeEfecto">¿Posee Efecto?</label>
+                <input type="checkbox" id="monstruoSincroniaPoseeEfecto" th:field="*{poseeEfecto}" />
+            </div>
+
+
+            <div>
+                <button type="submit">Guardar</button>
+            </div>
+            <div th:if="${param.successmonstruoSincronia}">
+                <p style="color:green;">Monstruo Sincronía guardado con éxito</p>
+            </div>
+        </form>
+    </div>
+
+    <div id="monstruoXyzForm" class="form-content" style="display: none;">
+        <h2>Guardar Monstruo Xyz</h2>
+        <form th:action="@{/carta/saveMonstruoXyz}" th:object="${monstruoXyz}" method="post">
+
+            <div>
+                <label for="monstruoXyzNombre">Nombre:</label>
+                <input type="text" id="monstruoXyzNombre" th:field="*{nombre}" required />
+            </div>
+
+            <div>
+                <label for="monstruoXyzEfecto">Texto:</label>
+                <input type="text" id="monstruoXyzEfecto" th:field="*{efecto}" required />
+            </div>
+
+            <div>
+                <label for="monstruoXyzAtributo">Atributo:</label>
+                <select id="monstruoXyzAtributo" th:field="*{atributo}" required>
+                    <option th:each="atributo : ${atributos}" th:value="${atributo}" th:text="${atributo}">Atributo</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="monstruoXyzTipo">Tipo:</label>
+                <select id="monstruoXyzTipo" th:field="*{tipoMonstruo}" required>
+                    <option th:each="tipo : ${tiposMonstruo}" th:value="${tipo}" th:text="${tipo}">Tipo</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="monstruoXyzAtaque">Ataque:</label>
+                <input type="number" id="monstruoXyzAtaque" th:field="*{ataque}" required />
+            </div>
+
+            <div>
+                <label for="monstruoXyzDefensa">Defensa:</label>
+                <input type="number" id="monstruoXyzDefensa" th:field="*{defensa}" required />
+            </div>
+
+            <div>
+                <label for="monstruoXyzRango">Rango:</label>
+                <input type="number" id="monstruoXyzRango" th:field="*{rango}" required />
+            </div>
+
+            <div>
+                <label for="monstruoXyzPoseeEfecto">¿Posee Efecto?</label>
+                <input type="checkbox" id="monstruoXyzPoseeEfecto" th:field="*{poseeEfecto}" />
+            </div>
+
+            <div>
+                <button type="submit">Guardar</button>
+            </div>
+            <div th:if="${param.successmonstruoXyz}">
+                <p style="color:green;">Monstruo Xyz guardado con éxito</p>
+            </div>
+
+        </form>
+    </div>
+
+    <div id="monstruoEnlaceForm" class="form-content" style="display: none;">
+        <h2>Guardar Monstruo Enlace</h2>
+        <form th:action="@{/carta/saveMonstruoEnlace}" th:object="${monstruoEnlace}" method="post">
+
+            <div>
+                <label for="monstruoEnlaceNombre">Nombre:</label>
+                <input type="text" id="monstruoEnlaceNombre" th:field="*{nombre}" required />
+            </div>
+
+            <div>
+                <label for="monstruoEnlaceEfecto">Texto:</label>
+                <input type="text" id="monstruoEnlaceEfecto" th:field="*{efecto}" required />
+            </div>
+
+            <div>
+                <label for="monstruoEnlaceAtributo">Atributo:</label>
+                <select id="monstruoEnlaceAtributo" th:field="*{atributo}" required>
+                    <option th:each="atributo : ${atributos}" th:value="${atributo}" th:text="${atributo}">Atributo</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="monstruoEnlaceTipo">Tipo:</label>
+                <select id="monstruoEnlaceTipo" th:field="*{tipoMonstruo}" required>
+                    <option th:each="tipo : ${tiposMonstruo}" th:value="${tipo}" th:text="${tipo}">Tipo</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="monstruoEnlaceAtaque">Ataque:</label>
+                <input type="number" id="monstruoEnlaceAtaque" th:field="*{ataque}" required />
+            </div>
+
+            <div>
+                <label for="monstruoEnlaceFlechas">Flechas de Enlace:</label>
+                <input type="number" id="monstruoEnlaceFlechas" th:field="*{flechas}" required />
+            </div>
+
+            <div>
+                <label for="monstruoEnlacePoseeEfecto">¿Posee Efecto?</label>
+                <input type="checkbox" id="monstruoEnlacePoseeEfecto" th:field="*{poseeEfecto}" />
+            </div>
+
+            <div>
+                <button type="submit">Guardar</button>
+            </div>
+            <div th:if="${param.successmonstruoEnlace}">
+                <p style="color:green;">Monstruo Enlace guardado con éxito</p>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+<script>
+    // Mostrar el formulario de monstruo por defecto al cargar la página
+    document.addEventListener('DOMContentLoaded', function () {
+        showForm('monstruo');
+    });
+
+    // Mostrar el dropdown para monstruo al seleccionar el botón de monstruo
+    document.querySelector('button[onclick="showForm(\'monstruo\')"]').addEventListener('click', function() {
+        document.getElementById('monstruoDropdown').style.display = 'flex';
+        document.getElementById('monstruoNormalForm').style.display = 'none';
+        document.getElementById('monstruoEfectoForm').style.display = 'none';
+        document.getElementById('monstruoRitualForm').style.display = 'none';
+        document.getElementById('monstruoFusionForm').style.display = 'none';
+        document.getElementById('monstruoSincroniaForm').style.display = 'none';
+        document.getElementById('monstruoXyzForm').style.display = 'none';
+        document.getElementById('monstruoEnlaceForm').style.display = 'none';
+    });
+
+    function togglePenduloFields(checkbox) {
+        var penduloFields = document.getElementById('penduloFields');
+        penduloFields.style.display = checkbox.checked ? 'block' : 'none';
+    }
+
+</script>
+</body>
+</html>

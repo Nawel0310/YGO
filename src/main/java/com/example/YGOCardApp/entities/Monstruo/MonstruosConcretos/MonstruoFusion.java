@@ -7,11 +7,12 @@ import jakarta.persistence.Entity;
 
 @Entity
 public class MonstruoFusion extends MonstruoConNivelYDefensa{
-    public MonstruoFusion(Integer id, Integer ataque, Integer defensa,
+    public MonstruoFusion(Integer id, String nombre, Integer ataque, Integer defensa,
                           Atributo atributo, TipoMonstruo tipoMonstruo,
                           String efecto, Integer nivel, Boolean esCantante,
                           Boolean poseeEfecto) {
         this.id=id;
+        this.nombre=nombre;
         this.ataque=ataque;
         this.defensa=defensa;
         this.atributo=atributo;

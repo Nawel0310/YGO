@@ -12,10 +12,11 @@ public class MonstruoXyz extends Monstruo {
     Integer defensa;
     Boolean poseeEfecto;
 
-    public MonstruoXyz(Integer id, Integer ataque, Integer defensa,
+    public MonstruoXyz(Integer id, String nombre, Integer ataque, Integer defensa,
                        Atributo atributo, TipoMonstruo tipoMonstruo,
                        String efecto, Boolean poseeEfecto, Integer rango) {
         this.id=id;
+        this.nombre=nombre;
         this.ataque=ataque;
         this.defensa=defensa;
         this.atributo=atributo;

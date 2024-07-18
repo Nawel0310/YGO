@@ -7,6 +7,7 @@ import com.example.YGOCardApp.entities.Monstruo.MonstruosConcretos.MonstruoPendu
 import com.example.YGOCardApp.repository.MonstruoConNivelYDefensaRepository;
 import com.example.YGOCardApp.repository.MonstruoPenduloConNivelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;

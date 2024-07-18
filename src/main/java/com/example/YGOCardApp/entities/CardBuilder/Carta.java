@@ -8,7 +8,9 @@ public abstract class Carta {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     protected Integer id;
+    @Column(length = 500)
     protected String nombre;
+    @Column(length = 1000)
     protected String efecto;
 
     public Integer getId() {

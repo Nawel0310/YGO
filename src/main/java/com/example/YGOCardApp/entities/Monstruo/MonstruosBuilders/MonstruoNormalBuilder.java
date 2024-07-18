@@ -67,7 +67,7 @@ public class MonstruoNormalBuilder extends MonstruoConNivelYDefensa implements M
 
     @Override
     public MonstruoNormal build() {
-        return new MonstruoNormal(id, ataque, defensa, atributo, tipoMonstruo, efecto, nivel, esCantante);
+        return new MonstruoNormal(id,nombre, ataque, defensa, atributo, tipoMonstruo, efecto, nivel, esCantante);
     }
 
 }

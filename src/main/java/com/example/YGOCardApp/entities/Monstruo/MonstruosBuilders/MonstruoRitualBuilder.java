@@ -4,8 +4,12 @@ import com.example.YGOCardApp.entities.Monstruo.MonstruosConcretos.MonstruoRitua
 import com.example.YGOCardApp.entities.Monstruo.enums.Atributo;
 import com.example.YGOCardApp.entities.Monstruo.MonstruoConNivelYDefensa;
 import com.example.YGOCardApp.entities.Monstruo.enums.TipoMonstruo;
+import com.example.YGOCardApp.entities.Monstruo.enums.TipoEspecialMonstruoEfecto;
 
 public class MonstruoRitualBuilder extends MonstruoConNivelYDefensa implements MonstruoConNivelYDefensaBuilder<MonstruoRitual> {
+
+    private TipoEspecialMonstruoEfecto tipoEspecialMonstruoEfecto;
+
     @Override
     public MonstruoRitualBuilder setAtributo(Atributo atributo) {
         this.atributo=atributo;
@@ -66,10 +70,13 @@ public class MonstruoRitualBuilder extends MonstruoConNivelYDefensa implements M
         return this;
     }
 
-    @Override
-    public MonstruoRitual build() {
-        return new MonstruoRitual(id,ataque,defensa,atributo,tipoMonstruo,efecto,nivel,esCantante,poseeEfecto);
+    public MonstruoRitualBuilder setTipoEspecialMonstruoEfecto(TipoEspecialMonstruoEfecto tipoEspecialMonstruoEfecto) {
+        this.tipoEspecialMonstruoEfecto = tipoEspecialMonstruoEfecto;
+        return this;
     }
 
-
+    @Override
+    public MonstruoRitual build() {
+        return new MonstruoRitual(id,nombre,ataque,defensa,atributo,tipoMonstruo,efecto,nivel,esCantante,poseeEfecto, tipoEspecialMonstruoEfecto);
+    }
 }

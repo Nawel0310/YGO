@@ -76,6 +76,6 @@ public class MonstruoDeEfectoBuilder extends MonstruoConNivelYDefensa implements
 
     @Override
     public MonstruoDeEfecto build() {
-        return new MonstruoDeEfecto(id,ataque,defensa,atributo,tipoMonstruo,efecto,nivel,esCantante,tipoEspecialMonstruoEfecto);
+        return new MonstruoDeEfecto(id,nombre,ataque,defensa,atributo,tipoMonstruo,efecto,nivel,esCantante,tipoEspecialMonstruoEfecto);
     }
 }

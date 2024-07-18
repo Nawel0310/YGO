@@ -8,11 +8,12 @@ import jakarta.persistence.Entity;
 
 @Entity
 public class MonstruoSincronia extends MonstruoConNivelYDefensa {
-    public MonstruoSincronia(Integer id, Integer ataque, Integer defensa,
+    public MonstruoSincronia(Integer id, String nombre, Integer ataque, Integer defensa,
             Atributo atributo, TipoMonstruo tipoMonstruo,
             String efecto, Integer nivel, Boolean esCantante,
             Boolean poseeEfecto) {
         this.id=id;
+        this.nombre=nombre;
         this.ataque=ataque;
         this.defensa=defensa;
         this.atributo=atributo;

@@ -57,7 +57,7 @@ public class MonstruoEnlaceBuilder extends Monstruo implements MonstruoBuilder<M
 
     @Override
     public MonstruoEnlace build() {
-        return new MonstruoEnlace(id,ataque,atributo,tipoMonstruo,efecto,poseeEfecto,flechas);
+        return new MonstruoEnlace(id,nombre,ataque,atributo,tipoMonstruo,efecto,poseeEfecto,flechas);
     }
 
 }

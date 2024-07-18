@@ -69,6 +69,6 @@ public class MonstruoFusionBuilder extends MonstruoConNivelYDefensa implements M
 
     @Override
     public MonstruoFusion build() {
-        return new MonstruoFusion(id,ataque,defensa,atributo,tipoMonstruo,efecto,nivel,esCantante,poseeEfecto);
+        return new MonstruoFusion(id,nombre,ataque,defensa,atributo,tipoMonstruo,efecto,nivel,esCantante,poseeEfecto);
     }
 }

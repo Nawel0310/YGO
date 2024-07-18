@@ -5,10 +5,12 @@ import com.example.YGOCardApp.entities.Monstruo.MonstruosBuilders.MonstruoEnlace
 import com.example.YGOCardApp.entities.Monstruo.MonstruosConcretos.MonstruoEnlace;
 import com.example.YGOCardApp.repository.MonstruoEnlaceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Service
 public class MonstruoEnlaceService extends MonstruoService<MonstruoEnlaceDTO,MonstruoEnlace>{
 
     private final MonstruoEnlaceRepository monstruoEnlaceRepository;

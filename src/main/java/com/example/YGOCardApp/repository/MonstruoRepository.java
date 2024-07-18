@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface MonstruoRepository<S extends Monstruo> extends JpaRepository<S, Integer> {
+public interface MonstruoRepository<S extends Monstruo> extends CartaRepository<S> {
     List<S> findByAtributo(Atributo atributo);
     List<S> findByTipoMonstruo(TipoMonstruo tipoMonstruo);
     List<S> findByAtaque(Integer ataque);

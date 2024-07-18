@@ -9,10 +9,11 @@ import jakarta.persistence.Entity;
 
 public class MonstruoNormal extends MonstruoConNivelYDefensa {
 
-    public MonstruoNormal(Integer id, Integer ataque, Integer defensa,
+    public MonstruoNormal(Integer id, String nombre, Integer ataque, Integer defensa,
                           Atributo atributo, TipoMonstruo tipoMonstruo,
                           String efecto, Integer nivel, Boolean esCantante) {
         this.id=id;
+        this.nombre=nombre;
         this.ataque=ataque;
         this.defensa=defensa;
         this.atributo=atributo;

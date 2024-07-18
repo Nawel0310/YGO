@@ -75,6 +75,6 @@ public class MonstruoPenduloXyzBuilder extends Monstruo implements MonstruoBuild
 
     @Override
     public MonstruoPenduloXyz build() {
-        return new MonstruoPenduloXyz (id,ataque, defensa, atributo, tipoMonstruo, efecto,  poseeEfecto, rango, escala,  efectoPendulo);
+        return new MonstruoPenduloXyz (id,nombre,ataque, defensa, atributo, tipoMonstruo, efecto,  poseeEfecto, rango, escala,  efectoPendulo);
     }
 }

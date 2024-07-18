@@ -7,10 +7,12 @@ import com.example.YGOCardApp.entities.Monstruo.enums.TipoEspecialMonstruoEfecto
 import com.example.YGOCardApp.repository.MonstruoConNivelYDefensaRepository;
 import com.example.YGOCardApp.repository.MonstruoDeEfectoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Service
 public class MonstruoDeEfectoService extends MonstruoConNivelYDefensaService<MonstruoDeEfectoDTO, MonstruoDeEfecto>{
     private final MonstruoDeEfectoRepository monstruoDeEfectoRepository;
 

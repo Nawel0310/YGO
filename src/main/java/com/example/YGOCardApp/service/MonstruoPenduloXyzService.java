@@ -6,10 +6,12 @@ import com.example.YGOCardApp.entities.Monstruo.MonstruosConcretos.MonstruoPendu
 import com.example.YGOCardApp.repository.MonstruoPenduloXyzRepository;
 import com.example.YGOCardApp.repository.MonstruoXyzRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Service
 public class MonstruoPenduloXyzService extends MonstruoXyzService{
     private final MonstruoPenduloXyzRepository monstruoPenduloXyzRepository;
 

@@ -10,10 +10,11 @@ import jakarta.persistence.Entity;
 public class MonstruoEnlace extends Monstruo {
     Integer flechas;
 
-    public MonstruoEnlace(Integer id, Integer ataque,
+    public MonstruoEnlace(Integer id, String nombre, Integer ataque,
                           Atributo atributo, TipoMonstruo tipoMonstruo,
                           String efecto, Boolean poseeEfecto, Integer flechas) {
         this.id=id;
+        this.nombre=nombre;
         this.ataque=ataque;
         this.atributo=atributo;
         this.tipoMonstruo=tipoMonstruo;

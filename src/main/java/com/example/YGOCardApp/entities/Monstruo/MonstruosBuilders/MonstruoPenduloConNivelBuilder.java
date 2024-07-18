@@ -81,6 +81,6 @@ public class MonstruoPenduloConNivelBuilder<T extends MonstruoConNivelYDefensa> 
 
     @Override
     public MonstruoPenduloConNivel<T> build() {
-        return new MonstruoPenduloConNivel<>(id,ataque,defensa,atributo,tipoMonstruo,efecto,nivel,esCantante,poseeEfecto,escala,efectoPendulo);
+        return new MonstruoPenduloConNivel<>(id,nombre,ataque,defensa,atributo,tipoMonstruo,efecto,nivel,esCantante,poseeEfecto,escala,efectoPendulo);
     }
 }
