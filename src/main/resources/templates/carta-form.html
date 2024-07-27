@@ -361,6 +361,9 @@
             </div>
 
             <!--MonstruoFusionPendulo-->
+            <!-- Mostrar campos de péndulo solo si es un monstruo de péndulo -->
+
+
 
             <div>
                 <button type="submit">Guardar</button>
@@ -380,12 +383,10 @@
                 <input type="text" id="monstruoSincroniaNombre" th:field="*{nombre}" required />
             </div>
 
-
             <div>
                 <label for="monstruoSincroniaEfecto">Texto:</label>
                 <input type="text" id="monstruoSincroniaEfecto" th:field="*{efecto}" required />
             </div>
-
 
             <div>
                 <label for="monstruoSincroniaAtributo">Atributo:</label>
@@ -394,7 +395,6 @@
                 </select>
             </div>
 
-
             <div>
                 <label for="monstruoSincroniaTipo">Tipo:</label>
                 <select id="monstruoSincroniaTipo" th:field="*{tipoMonstruo}" required>
@@ -402,36 +402,30 @@
                 </select>
             </div>
 
-
             <div>
                 <label for="monstruoSincroniaAtaque">Ataque:</label>
                 <input type="number" id="monstruoSincroniaAtaque" th:field="*{ataque}" required />
             </div>
-
 
             <div>
                 <label for="monstruoSincroniaDefensa">Defensa:</label>
                 <input type="number" id="monstruoSincroniaDefensa" th:field="*{defensa}" required />
             </div>
 
-
             <div>
                 <label for="monstruoSincroniaNivel">Nivel:</label>
                 <input type="number" id="monstruoSincroniaNivel" th:field="*{nivel}" required />
             </div>
-
 
             <div>
                 <label for="monstruoSincroniaEsCantante">¿Es Cantante?</label>
                 <input type="checkbox" id="monstruoSincroniaEsCantante" th:field="*{esCantante}" />
             </div>
 
-
             <div>
                 <label for="monstruoSincroniaPoseeEfecto">¿Posee Efecto?</label>
                 <input type="checkbox" id="monstruoSincroniaPoseeEfecto" th:field="*{poseeEfecto}" />
             </div>
-
 
             <div>
                 <button type="submit">Guardar</button>
@@ -571,11 +565,6 @@
         document.getElementById('monstruoXyzForm').style.display = 'none';
         document.getElementById('monstruoEnlaceForm').style.display = 'none';
     });
-
-    function togglePenduloFields(checkbox) {
-        var penduloFields = document.getElementById('penduloFields');
-        penduloFields.style.display = checkbox.checked ? 'block' : 'none';
-    }
 
 </script>
 </body>

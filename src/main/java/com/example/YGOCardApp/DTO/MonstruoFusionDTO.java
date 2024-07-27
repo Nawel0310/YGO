@@ -15,6 +15,7 @@ public class MonstruoFusionDTO {
     private Integer defensa;
     private Boolean esCantante;
 
+
     public Integer getNivel() {
         return nivel;
     }
@@ -94,4 +95,5 @@ public class MonstruoFusionDTO {
     public void setPoseeEfecto(Boolean poseeEfecto) {
         this.poseeEfecto = poseeEfecto;
     }
+
 }

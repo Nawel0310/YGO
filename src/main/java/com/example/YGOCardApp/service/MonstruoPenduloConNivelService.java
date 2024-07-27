@@ -12,7 +12,9 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Service
 public class MonstruoPenduloConNivelService<T extends MonstruoConNivelYDefensa> extends MonstruoConNivelYDefensaService<MonstruoPenduloConNivelDTO,MonstruoPenduloConNivel<T>>{
+
     private final MonstruoPenduloConNivelRepository<T> monstruoPenduloConNivelRepository;
 
     @Autowired

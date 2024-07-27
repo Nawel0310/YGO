@@ -2,19 +2,22 @@ package com.example.YGOCardApp.controller;
 
 import com.example.YGOCardApp.DTO.*;
 import com.example.YGOCardApp.entities.Magica.enums.TipoMagica;
+import com.example.YGOCardApp.entities.Monstruo.MonstruosConcretos.MonstruoFusion;
+import com.example.YGOCardApp.entities.Monstruo.MonstruosConcretos.MonstruoRitual;
 import com.example.YGOCardApp.entities.Monstruo.enums.Atributo;
 import com.example.YGOCardApp.entities.Monstruo.enums.TipoEspecialMonstruoEfecto;
 import com.example.YGOCardApp.entities.Monstruo.enums.TipoMonstruo;
 import com.example.YGOCardApp.entities.Trampa.enums.TipoTrampa;
 import com.example.YGOCardApp.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 
-@Controller
+@RestController
 @RequestMapping("/carta")
 public class CartaController {
 
@@ -28,6 +31,10 @@ public class CartaController {
     private final MonstruoXyzService monstruoXyzService;
     private final MonstruoEnlaceService monstruoEnlaceService;
 
+    //Monstruos Péndulo:
+    private final MonstruoPenduloConNivelService<MonstruoRitual> monstruoRitualPenduloConNivelService;
+    private final MonstruoPenduloConNivelService<MonstruoFusion> monstruoFusionPenduloConNivelService;
+
 
     @Autowired
     public CartaController(MagicaService magicaService, TrampaService trampaService,
@@ -37,7 +44,9 @@ public class CartaController {
                            MonstruoFusionService monstruoFusionService,
                            MonstruoSincroniaService monstruoSincroniaService,
                            MonstruoXyzService monstruoXyzService,
-                           MonstruoEnlaceService monstruoEnlaceService) {
+                           MonstruoEnlaceService monstruoEnlaceService,
+                           MonstruoPenduloConNivelService<MonstruoRitual> monstruoRitualPenduloConNivelService,
+                           MonstruoPenduloConNivelService<MonstruoFusion> monstruoFusionPenduloConNivelService) {
         this.magicaService = magicaService;
         this.trampaService = trampaService;
         this.monstruoNormalService = monstruoNormalService;
@@ -47,85 +56,77 @@ public class CartaController {
         this.monstruoSincroniaService = monstruoSincroniaService;
         this.monstruoXyzService = monstruoXyzService;
         this.monstruoEnlaceService = monstruoEnlaceService;
+        this.monstruoRitualPenduloConNivelService = monstruoRitualPenduloConNivelService;
+        this.monstruoFusionPenduloConNivelService = monstruoFusionPenduloConNivelService;
     }
 
-    @GetMapping("/new")
-    public String showForm(Model model) {
-
-        model.addAttribute("magica", new MagicaDTO());
-        model.addAttribute("trampa", new TrampaDTO());
-        model.addAttribute("monstruoNormal", new MonstruoNormalDTO());
-        model.addAttribute("monstruoDeEfecto", new MonstruoDeEfectoDTO());
-        model.addAttribute("monstruoRitual", new MonstruoRitualDTO());
-        model.addAttribute("monstruoFusion", new MonstruoFusionDTO());
-        model.addAttribute("monstruoSincronia", new MonstruoSincroniaDTO());
-        model.addAttribute("monstruoXyz", new MonstruoXyzDTO());
-        model.addAttribute("monstruoEnlace", new MonstruoEnlaceDTO());
-
-        model.addAttribute("tiposMagica", TipoMagica.values());
-        model.addAttribute("tiposTrampa", TipoTrampa.values());
-        model.addAttribute("tiposMonstruo", TipoMonstruo.values());
-        model.addAttribute("atributos", Atributo.values());
-        model.addAttribute("tiposEspecialMonstruoEfecto", TipoEspecialMonstruoEfecto.values());
-        return "carta-form";
-    }
 
     @PostMapping("/saveMagica")
-    public String saveMagica(@ModelAttribute("magica") MagicaDTO magicaDTO) {
-        magicaService.saveCarta(magicaDTO);
-        return "redirect:/carta/new?successMagica";
+    public ResponseEntity<MagicaDTO> saveMagica(@RequestBody MagicaDTO magicaDTO) {
+        MagicaDTO savedMagica = magicaService.saveCarta(magicaDTO);
+        return ResponseEntity.ok(savedMagica);//Devuelve un código 200 OK
     }
 
     @PostMapping("/saveTrampa")
-    public String saveTrampa(@ModelAttribute("trampa") TrampaDTO trampaDTO) {
-        trampaService.saveCarta(trampaDTO);
-        return "redirect:/carta/new?successTrampa";
+    public ResponseEntity<TrampaDTO> saveTrampa(@RequestBody TrampaDTO trampaDTO) {
+        TrampaDTO savedTrampa = trampaService.saveCarta(trampaDTO);
+        return ResponseEntity.ok(savedTrampa);
     }
 
     @PostMapping("/saveMonstruoNormal")
-    public String saveMonstruoNormal(@ModelAttribute("monstruoNormal") MonstruoNormalDTO monstruoNormalDTO) {
-        monstruoNormalService.saveCarta(monstruoNormalDTO);
-        return "redirect:/carta/new?successMonstruoNormal";
+    public ResponseEntity<MonstruoNormalDTO> saveMonstruoNormal(@RequestBody MonstruoNormalDTO monstruoNormalDTO) {
+        MonstruoNormalDTO savedMonstruoNormal = monstruoNormalService.saveCarta(monstruoNormalDTO);
+        return ResponseEntity.ok(savedMonstruoNormal);
     }
 
     @PostMapping("/saveMonstruoDeEfecto")
-    public String saveMonstruoDeEfecto(@ModelAttribute("monstruoDeEfecto") MonstruoDeEfectoDTO monstruoDeEfectoDTO) {
-        monstruoDeEfectoService.saveCarta(monstruoDeEfectoDTO);
-        return "redirect:/carta/new?successMonstruoDeEfecto";
+    public ResponseEntity<MonstruoDeEfectoDTO> saveMonstruoDeEfecto(@RequestBody MonstruoDeEfectoDTO monstruoDeEfectoDTO) {
+        MonstruoDeEfectoDTO savedMonstruoDeEfecto = monstruoDeEfectoService.saveCarta(monstruoDeEfectoDTO);
+        return ResponseEntity.ok(savedMonstruoDeEfecto);
     }
 
     @PostMapping("/saveMonstruoRitual")
-    public String saveMonstruoRitual(@ModelAttribute("monstruoRitual") MonstruoRitualDTO monstruoRitualDTO) {
-        monstruoRitualService.saveCarta(monstruoRitualDTO);
-        return "redirect:/carta/new?successMonstruoRitual";
+    public ResponseEntity<MonstruoRitualDTO> saveMonstruoRitual(@RequestBody MonstruoRitualDTO monstruoRitualDTO) {
+        MonstruoRitualDTO savedMonstruoRitual = monstruoRitualService.saveCarta(monstruoRitualDTO);
+        return ResponseEntity.ok(savedMonstruoRitual);
     }
 
     @PostMapping("/saveMonstruoFusion")
-    public String saveMonstruoFusion(@ModelAttribute("monstruoFusion") MonstruoFusionDTO monstruoFusionDTO) {
-        monstruoFusionService.saveCarta(monstruoFusionDTO);
-        return "redirect:/carta/new?successMonstruoFusion";
+    public ResponseEntity<MonstruoFusionDTO> saveMonstruoFusion(@RequestBody MonstruoFusionDTO monstruoFusionDTO) {
+        MonstruoFusionDTO savedMonstruoFusion = monstruoFusionService.saveCarta(monstruoFusionDTO);
+        return ResponseEntity.ok(savedMonstruoFusion);
     }
 
     @PostMapping("/saveMonstruoSincronia")
-    public String saveMonstruoSincronia(@ModelAttribute("monstruoSincronia") MonstruoSincroniaDTO monstruoSincroniaDTO) {
-        monstruoSincroniaService.saveCarta(monstruoSincroniaDTO);
-        return "redirect:/carta/new?successMonstruoSincronia";
+    public ResponseEntity<MonstruoSincroniaDTO> saveMonstruoSincronia(@RequestBody MonstruoSincroniaDTO monstruoSincroniaDTO) {
+        MonstruoSincroniaDTO savedMonstruoSincronia = monstruoSincroniaService.saveCarta(monstruoSincroniaDTO);
+        return ResponseEntity.ok(savedMonstruoSincronia);
     }
 
     @PostMapping("/saveMonstruoXyz")
-    public String saveMonstruoXyz(@ModelAttribute("monstruoXyz") MonstruoXyzDTO monstruoXyzDTO) {
-        monstruoXyzService.saveCarta(monstruoXyzDTO);
-        return "redirect:/carta/new?successMonstruoXyz";
+    public ResponseEntity<MonstruoXyzDTO> saveMonstruoXyz(@RequestBody MonstruoXyzDTO monstruoXyzDTO) {
+        MonstruoXyzDTO savedMonstruoXyz = monstruoXyzService.saveCarta(monstruoXyzDTO);
+        return ResponseEntity.ok(savedMonstruoXyz);
     }
 
     @PostMapping("/saveMonstruoEnlace")
-    public String saveMonstruoEnlace(@ModelAttribute("monstruoEnlace") MonstruoEnlaceDTO monstruoEnlaceDTO) {
-        monstruoEnlaceService.saveCarta(monstruoEnlaceDTO);
-        return "redirect:/carta/new?successMonstruoEnlace";
+    public ResponseEntity<MonstruoEnlaceDTO> saveMonstruoEnlace(@RequestBody MonstruoEnlaceDTO monstruoEnlaceDTO) {
+        MonstruoEnlaceDTO savedMonstruoEnlace = monstruoEnlaceService.saveCarta(monstruoEnlaceDTO);
+        return ResponseEntity.ok(savedMonstruoEnlace);
     }
 
+    @PostMapping("/saveMonstruoRitualPenduloConNivel")
+    public ResponseEntity<MonstruoPenduloConNivelDTO> saveMonstruoRitualPenduloConNivel(@RequestBody MonstruoPenduloConNivelDTO monstruoPenduloConNivelDTO) {
+        MonstruoPenduloConNivelDTO savedMonstruoPenduloConNivel = monstruoRitualPenduloConNivelService.saveCarta(monstruoPenduloConNivelDTO);
+        return ResponseEntity.ok(savedMonstruoPenduloConNivel);
+    }
 
-
+    @PostMapping("/saveMonstruoFusionPenduloConNivel")
+    public ResponseEntity<MonstruoPenduloConNivelDTO> saveMonstruoFusionPenduloConNivel(@RequestBody MonstruoPenduloConNivelDTO monstruoPenduloConNivelDTO) {
+        MonstruoPenduloConNivelDTO savedMonstruoPenduloConNivel = monstruoFusionPenduloConNivelService.saveCarta(monstruoPenduloConNivelDTO);
+        return ResponseEntity.ok(savedMonstruoPenduloConNivel);
+    }
 }
+
 
 
